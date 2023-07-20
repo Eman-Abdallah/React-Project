@@ -1,11 +1,15 @@
 
 import { Link } from "react-router-dom"
-export default function Header(){
-    function logout(){
+export default function Header() {
+/**
+ * The function "logout" removes the "email" item from the local storage and redirects the user to the
+ * homepage.
+ */
+    function logout() {
         window.localStorage.removeItem('email')
-        window.location.pathname="/"
+        window.location.pathname = "/"
     }
-    return(
+    return (
         <nav className="d-flex p-2">
             <ul className="d-flex">
                 <li >
@@ -16,12 +20,12 @@ export default function Header(){
                 </li>
             </ul>
             <div >
-          { !window.localStorage.getItem('email')?
-          ( <div className="d-flex">
-          <Link to="/register" className="register mr-1"> Register</Link>
-            <Link to="/login" className="register"> Login</Link>
-            </div>)
-        : (<div className="register" onClick={logout}> Logout</div>)}
+                {!window.localStorage.getItem('email') ?
+                    (<div className="d-flex">
+                        <Link to="/register" className="register mr-1"> Register</Link>
+                        <Link to="/login" className="register"> Login</Link>
+                    </div>)
+                    : (<div className="register" onClick={logout}> Logout</div>)}
             </div>
         </nav>
     )
