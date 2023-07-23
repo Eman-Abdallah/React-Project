@@ -6,6 +6,7 @@ import Home from "./Home"
 import About from "./About"
 import Dashboard from "./Dashboard"
 import Users from "./Users"
+import UpdateUser from "./UpdateUser"
 export default function App(){
   return(
     <div className="parent">    
@@ -15,7 +16,8 @@ export default function App(){
         <Route path="" element={<Home/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/dashboard" element={<Dashboard/>}>
-          <Route path="users" element={<Users/>} exact/>
+          <Route path="users" element={<Users/>} />
+          <Route path="users/:id" element={<UpdateUser/>}/>
           </Route>
       </Routes>      
     </div>
