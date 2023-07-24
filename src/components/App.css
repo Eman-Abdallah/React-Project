@@ -8,7 +8,8 @@
     font-size: 20px;
     text-decoration: none;
     font-weight: 700;
-  
+    padding: 10px;
+    animation: 0.3s ease-in-out;
 }
 
 .text-primary{
@@ -36,10 +37,10 @@ i{
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
-    animation: 0.1s;
+    animation: 0.3s ease-in-out;
     padding: 10px;
 }
-.side-item:hover , .active {
+.side-item:hover , .active , .nav-item:hover {
   background-color: rgb(21, 190, 212);
   color:white;
   border-radius: 10px;

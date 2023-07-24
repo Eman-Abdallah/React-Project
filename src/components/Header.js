@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 export default function Header() {
 /**
  * The function "logout" removes the "email" item from the local storage and redirects the user to the
@@ -13,10 +13,10 @@ export default function Header() {
         <nav className="d-flex p-2 shadow">
             <ul className="d-flex">
                 <li >
-                    <Link to="/home" className="nav-item mr-1" >Home</Link>
+                    <NavLink activeClassName="active" to="/home" className="nav-item mr-1" >Home</NavLink>
                 </li>
                 <li >
-                    <Link to="/about" className="nav-item mr-1" >About</Link>
+                    <NavLink activeClassName="active" to="/about" className="nav-item mr-1" >About</NavLink>
                 </li>
             </ul>
             <div >
