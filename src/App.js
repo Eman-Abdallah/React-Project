@@ -1,22 +1,28 @@
 import { Routes ,Route} from "react-router-dom"
-import SignUp from "./SignUp"
-import Login from "./Login"
-
-import Home from "./Home"
-import About from "./About"
-import Dashboard from "./Dashboard"
-import Users from "./Users"
-import UpdateUser from "./UpdateUser"
+//dashboard
+import Dashboard from "./pages/dashboard/Dashboard"
+//users
+import Users from "./pages/dashboard/users/Users"
+import UpdateUser from "./pages/dashboard/users/UpdateUser"
+import CreateUser from "./pages/dashboard/users/CreateUser"
+//website
+import Home from "./pages/Website/Home"
+import About from "./pages/Website/About"
+//auth
+import SignUp from "./pages/Website/Auth/SignUp"
+import Login from "./pages/Website/Auth/Login"
 export default function App(){
   return(
     <div className="parent">    
       <Routes>
         <Route path="/register" element={<SignUp/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="" element={<Home/>}/>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/home" element={<Home/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/dashboard" element={<Dashboard/>}>
           <Route path="users" element={<Users/>} />
+          <Route path="user/create" element={<CreateUser/>}/>
           <Route path="users/:id" element={<UpdateUser/>}/>
           </Route>
       </Routes>      

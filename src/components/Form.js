@@ -7,6 +7,20 @@ export default function Form(props) {
     const [rPass, setRpass] = useState('');
     const [accept, setAccept] = useState(false);
     const [emailError, setEmailerror] = useState('');
+    const styleRegister={
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+    const formStyle={
+        boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+        width: '500px'
+    }
+    const buttonStyle={
+        width:"100%",
+        marginTop:"20px",
+        justifyContent: 'center',
+    }
     useEffect(()=>{
         setName(props.name)
         setEmail(props.email)
@@ -31,15 +45,15 @@ export default function Form(props) {
         try {
             if (flag) {
                 //send data
-                let res = await axios.post("http://127.0.0.1:8000/api/register", {
+                let res = await axios.post(`http://127.0.0.1:8000/api/${props.endPoints}`, {
                     name: name,
                     email: email,
                     password: pass,
                     password_confirmation: rPass
                 });
                 if (res.status === 200) {
-                    window.localStorage.setItem("email", email);
-                    window.location.pathname = "/"
+                    props.hasLocalStorage &&  window.localStorage.setItem("email", email);
+                    window.location.pathname = `/${props.navigate}`
                 }
             }
         } catch (err) {
@@ -49,9 +63,9 @@ export default function Form(props) {
     }
 
     return (
-        <div>
-            <div className="sign">
-                <form onSubmit={submit}>
+        <div className="parent">
+            <div className="sign" style={props.styleRegister && styleRegister}>
+                <form onSubmit={submit} style={props.formStyle && formStyle}>
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name" placeholder="Name.." value={name} onChange={(e) => setName(e.target.value)} />
                     {name === '' && accept && <p className="error">User Name is required</p>}
@@ -66,7 +80,7 @@ export default function Form(props) {
                     <label htmlFor="repeat">Repeat Password:</label>
                     <input type="password" id="repeat" placeholder="Repeat Password.." value={rPass} onChange={(e) => setRpass(e.target.value)} />
                     {rPass !== pass && accept && <p className="error">Password does not match</p>}
-                    <button type="submit" className="register"> {props.button}</button>
+                    <button type="submit" className="register" style={props.buttonStyle && buttonStyle}> {props.button}</button>
                 </form>
             </div>
         </div>

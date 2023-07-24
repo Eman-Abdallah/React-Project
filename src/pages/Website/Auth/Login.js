@@ -1,14 +1,22 @@
 
 import { useState } from "react";
 import axios from "axios";
-import Header from "./components/Header"
+import Header from "../../../components/Header"
 export default function Login() {
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [accept, setAccept] = useState(false);
     const [emailError, setEmailerror] = useState('');
-
+    const styleRegister={
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+    const formStyle={
+        boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+        width: '500px'
+    }
 /**
  * The function `submit` is an asynchronous function that handles form submission, checks if the
  * password length is at least 8 characters, sends a POST request to a login API endpoint with the
@@ -27,7 +35,6 @@ export default function Login() {
             flag = true;
         }
         try {
-
             if (flag) {
                 //send data
                 let res = await axios.post("http://127.0.0.1:8000/api/login", {
@@ -46,10 +53,10 @@ export default function Login() {
 
     return (
         <div>
-
             <Header />
-            <div className="sign">
-                <form onSubmit={submit}>
+            <div className="parent">
+            <div className="sign" style={ styleRegister}>
+                <form onSubmit={submit} style={ formStyle}>
                     <label htmlFor="email">Email:</label>
                     <input type="email" id="email" placeholder="Email.." required value={email} onChange={(e) => setEmail(e.target.value)} />
                     {accept && emailError
@@ -60,6 +67,7 @@ export default function Login() {
                     {pass.length < 8 && accept && <p className="error">Password must be more than 8 letters</p>}
                     <button type="submit" className="register"> Login</button>
                 </form>
+            </div>
             </div>
         </div>
     )

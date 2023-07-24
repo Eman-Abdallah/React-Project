@@ -10,13 +10,13 @@ export default function Header() {
         window.location.pathname = "/"
     }
     return (
-        <nav className="d-flex p-2">
+        <nav className="d-flex p-2 shadow">
             <ul className="d-flex">
                 <li >
-                    <Link to="/home" className="mr-1" >Home</Link>
+                    <Link to="/home" className="nav-item mr-1" >Home</Link>
                 </li>
                 <li >
-                    <Link to="/about" >About</Link>
+                    <Link to="/about" className="nav-item mr-1" >About</Link>
                 </li>
             </ul>
             <div >

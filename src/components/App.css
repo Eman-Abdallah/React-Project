@@ -1,6 +1,16 @@
-.topbar{
- box-shadow:    2px 1px 20px 0px #655d5d1f;
+/* header */
+
+.shadow{
+  box-shadow:    2px 1px 20px 0px #655d5d1f;
 }
+.nav-item {
+  color: #1E3050;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 700;
+  
+}
+
 .text-primary{
   color: rgb(21, 190, 212);
 }
@@ -11,16 +21,29 @@ i{
   font-size: 20px;
   cursor: pointer;
 }
+
+/* sidebar */
 .sidebar{
     width: 20%;
-    box-shadow: 2px -1px 4px 0px #c3c0c0;
+    border-right: 1px solid #80808047;
     height: 88vh;
 
 }
 .side-item{
-    color: black;
-    font-size: 20px;
+    color: #1E3050;
+    font-size: 22px;
     text-decoration: none;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    animation: 0.1s;
+    padding: 10px;
+}
+.side-item:hover , .active {
+  background-color: rgb(21, 190, 212);
+  color:white;
+  border-radius: 10px;
+  
 }
 .dashboard{
     width: 80%;
@@ -61,3 +84,57 @@ table {
     border-bottom: 1px solid #ccc;
     font-weight: bold;
   }
+  /* form */
+  /* Sign Up */
+.sign{
+  width: 100%;
+  height: 100%;
+
+}
+form{
+  padding: 20px; 
+}
+input,label{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  
+}
+input{
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+input:focus-visible{
+  border: 1px solid rgb(21, 190, 212);
+}
+label{
+  margin: 2px 0;
+  padding: 10px 0;
+}
+.mr-0{
+  margin-right: 0 !important;
+}
+.content-flex{
+  display: flex;
+}
+.register{
+  padding: 10px 20px;
+  background-color: rgb(21, 190, 212);
+  border: none;
+  border-radius: 10px;
+  margin: auto;
+  display: flex;
+  color: white;
+  margin-top: 10px;
+  text-decoration: none;
+}
+.register:hover{
+  color:rgb(21, 190, 212);
+  background-color: white;
+  border: 1px solid rgb(21, 190, 212);
+}
+.error{
+  font-size: 12px;
+  color: red;
+  margin-top: 5px;
+}
