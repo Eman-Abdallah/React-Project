@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { User } from "../pages/Context/Context";
 export default function Form(props) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [rPass, setRpass] = useState('');
-    const [accept, setAccept] = useState(false);
+    // const [accept, setAccept] = useState(false);
     const [emailError, setEmailerror] = useState('');
+    const userShow = useContext(User)
+    // console.log(userShow);
     const styleRegister={
         display: 'flex',
         alignItems: 'center',
@@ -36,7 +39,7 @@ export default function Form(props) {
     async function submit(e) {
         let flag = true;
         e.preventDefault();
-        setAccept(true)
+        // setAccept(true)
         if (name === '' || pass.length < 8 || rPass !== pass) {
             flag = false;
         } else {
@@ -51,10 +54,15 @@ export default function Form(props) {
                     password: pass,
                     password_confirmation: rPass
                 });
-                if (res.status === 200) {
-                    props.hasLocalStorage &&  window.localStorage.setItem("email", email);
-                    window.location.pathname = `/${props.navigate}`
-                }
+                // if (res.status === 200) {
+                //     props.hasLocalStorage &&  window.localStorage.setItem("email", email);
+                //     window.location.pathname = `/${props.navigate}`
+                // }
+                const token=res.data.data.token
+                const userDetails= res.data.data.user
+                console.log(token);
+                console.log(userDetails);
+                userShow.setAuth({token, userDetails})
             }
         } catch (err) {
             setEmailerror(err.response.status);
@@ -68,18 +76,18 @@ export default function Form(props) {
                 <form onSubmit={submit} style={props.formStyle && formStyle}>
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name" placeholder="Name.." value={name} onChange={(e) => setName(e.target.value)} />
-                    {name === '' && accept && <p className="error">User Name is required</p>}
+                    {/* {name === '' && accept && <p className="error">User Name is required</p>} */}
                     <label htmlFor="email">Email:</label>
                     <input type="email" id="email" placeholder="Email.." required value={email} onChange={(e) => setEmail(e.target.value)} />
-                    {accept && emailError
+                    {/* {accept && emailError
                         === 422 && <p className="error">This email is already been taken
-                        </p>}
+                        </p>} */}
                     <label htmlFor="password">Password:</label>
                     <input type="password" id="password" placeholder="Password.." value={pass} onChange={(e) => setPass(e.target.value)} />
-                    {pass.length < 8 && accept && <p className="error">Password must be more than 8 letters</p>}
+                    {/* {pass.length < 8 && accept && <p className="error">Password must be more than 8 letters</p>} */}
                     <label htmlFor="repeat">Repeat Password:</label>
                     <input type="password" id="repeat" placeholder="Repeat Password.." value={rPass} onChange={(e) => setRpass(e.target.value)} />
-                    {rPass !== pass && accept && <p className="error">Password does not match</p>}
+                    {/* {rPass !== pass && accept && <p className="error">Password does not match</p>} */}
                     <button type="submit" className="register" style={props.buttonStyle && buttonStyle}> {props.button}</button>
                 </form>
             </div>

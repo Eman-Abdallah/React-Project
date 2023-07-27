@@ -11,6 +11,8 @@ import About from "./pages/Website/About"
 //auth
 import SignUp from "./pages/Website/Auth/SignUp"
 import Login from "./pages/Website/Auth/Login"
+import RequiredAuth from "./pages/Website/Auth/RequiredAuth"
+import PersistLogin from "./pages/Website/Auth/PresistLogin"
 export default function App(){
   return(
     <div className="parent">    
@@ -20,11 +22,15 @@ export default function App(){
         <Route path="/" element={<Home/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/about" element={<About/>}/>
+        <Route element={<PersistLogin/>}>
+        <Route element={<RequiredAuth/>}>
         <Route path="/dashboard" element={<Dashboard/>}>
           <Route path="users" element={<Users/>} />
           <Route path="user/create" element={<CreateUser/>}/>
           <Route path="users/:id" element={<UpdateUser/>}/>
           </Route>
+        </Route>
+        </Route>
       </Routes>      
     </div>
   )

@@ -1,17 +1,26 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import { User } from "../../Context/Context";
 
 export default function Users() {
     const [users, setUser] = useState([]);
     // set variable to increase when delete user to add to use effect to update data immediately
     const [useS, setRun] = useState(0);
+    const tokenContext= useContext(User);
+    const token= tokenContext.auth.token;
+
 
 /* used to fetch user data from the specified API endpoint and update the `users` state variable. */
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/user/show")
-            .then((res) => res.json())
-            .then((data) => setUser(data));
+        axios.get("http://127.0.0.1:8000/api/user/show",{
+            headers:{
+                Accept:"application/json",
+                Authorization:"Bearer "+ token
+            }
+        })
+            .then((data) => setUser(data.data))
+            .catch((err)=> console.log(err))
     }, [useS])
 
 
@@ -23,7 +32,11 @@ export default function Users() {
  */
     async function deleteUser(id) {
         try {
-            const res = await axios.delete(`http://127.0.0.1:8000/api/user/delete/ ${id}`);
+            const res = await axios.delete(`http://127.0.0.1:8000/api/user/delete/ ${id}`,{
+                headers:{
+                    Authorization:"Bearer "+ token
+                }
+            });
             if (res.status === 200) {
                 setRun((prev) => prev + 1);
             }
