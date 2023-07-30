@@ -176,10 +176,17 @@ table {
   align-items: center;
   justify-content: center;
 }
+.new-user{
+  display: block;
+}
 form{
   padding: 20px; 
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   width: 500px;
+}
+form.new{
+  width: 100%;
+  box-shadow: none;
 }
 input,label{
   display: block;

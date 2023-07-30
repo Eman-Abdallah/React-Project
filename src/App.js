@@ -5,6 +5,10 @@ import Dashboard from "./pages/dashboard/Dashboard"
 import Users from "./pages/dashboard/users/Users"
 import UpdateUser from "./pages/dashboard/users/UpdateUser"
 import CreateUser from "./pages/dashboard/users/CreateUser"
+//products
+import Products from "./pages/dashboard/Products/Products"
+import CreateProduct from "./pages/dashboard/Products/CreateProduct"
+import UpdateProduct from "./pages/dashboard/Products/UpdateProduct"
 //website
 import Home from "./pages/Website/Home"
 import About from "./pages/Website/About"
@@ -28,6 +32,9 @@ export default function App(){
           <Route path="users" element={<Users/>} />
           <Route path="user/create" element={<CreateUser/>}/>
           <Route path="users/:id" element={<UpdateUser/>}/>
+          <Route path="products" element={<Products/>} />
+          <Route path="product/create" element={<CreateProduct/>}/>
+          <Route path="products/:id" element={<UpdateProduct/>}/>
           </Route>
         </Route>
         </Route>

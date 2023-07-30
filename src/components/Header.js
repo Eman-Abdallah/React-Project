@@ -9,8 +9,8 @@ export default function Header() {
  * The function "logout" removes the "email" item from the local storage and redirects the user to the
  * homepage.
  */
- async  function logout() {
-        await axios.post("http://127.0.0.1:8000/api/logout",null,{
+   function logout() {
+         axios.post("http://127.0.0.1:8000/api/logout",null,{
           headers:{
               Authorization:"Bearer" + token,
           },

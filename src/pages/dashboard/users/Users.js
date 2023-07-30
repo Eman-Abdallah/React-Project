@@ -10,7 +10,6 @@ export default function Users() {
     const tokenContext= useContext(User);
     const token= tokenContext.auth.token;
 
-
 /* used to fetch user data from the specified API endpoint and update the `users` state variable. */
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/user/show",{
