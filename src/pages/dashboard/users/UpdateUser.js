@@ -38,7 +38,6 @@ export default function UpdateUser() {
     const tokenContext= useContext(User);
     const token= tokenContext.auth.token;
     const id = window.location.pathname.split("/")[3];
-    console.log(id);
     useEffect(() => {
         fetch(`http://127.0.0.1:8000/api/user/showbyid/${id}`,
         {
@@ -50,8 +49,6 @@ export default function UpdateUser() {
             .then((data) => {
                 setName(data[0].name);
                 setEmail(data[0].email);
-                console.log(name);
-                console.log(email);
             });
 
     },[])
